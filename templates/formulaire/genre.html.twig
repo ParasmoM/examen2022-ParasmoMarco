@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormulaireController!{% endblock %}
+
+{% block body %}
+<div id="modalCateg">
+    <div class="modalCateg-content">
+        <header>
+            <h1>Ajouter un genre</h1>
+            <a href="{{ path('show_dashboard') }}">&times;</a>
+        </header>
+
+        {{ form_start(form) }}
+
+        <main>
+            <div class="row">
+                {{ form_row(form.nom) }}
+            </div>
+            <div class="row-textarea">
+                {{ form_row(form.description) }}
+            </div>
+        </main>
+
+        {{ form_rest(form) }}
+        <footer>
+            <div id="btnModal">
+                <button>Save</button>
+            </div>
+        </footer>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

@@ -6,7 +6,7 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            <link href="{{ asset('css/styles.css') }}" rel="stylesheet"/>
         {% endblock %}
 
         {% block javascripts %}
@@ -14,6 +14,44 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+            <main class="home {% if app.request.attributes.get('_route') == 'show_dashboard' 
+                                or app.request.attributes.get('_route') == 'show_dashboard_genre'
+                                or app.request.attributes.get('_route') == 'show_chanson' %}active{% endif %}" id="home">
+                <section class="home-container">
+                    <section class="home-menu">
+                        <div class="box">
+                            <div class="box-content">
+                                <h3>Genre</h3>
+                                <p>Ajouter un nouveau genre dans la base de données</p>
+                                <button id="btn-box"><a href="{{ path('formulaire', {type: 'genre'}) }}">Valider</a></button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-content">
+                                <h3>Chanson</h3>
+                                <p>Ajoute une nouvelle chanson dans la base de données</p>
+                                <button id="btn-box"><a href="{{ path('formulaire', {type: 'chanson'}) }}">Valider</a></button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-content">
+                                <h3>Liste chanson</h3>
+                                <p>Afficher tout les cotégories</p>
+                                <button id="btn-box"><a href="{{ path('show_dashboard') }}">Valider</a></button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-content">
+                                <h3>Liste genre</h3>
+                                <p>Afficher tout les articles</p>
+                                <button id="btn-box"><a href="{{ path('show_dashboard_genre') }}">Valider</a></button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="home-contenu">
+                        {% block body %}{% endblock %}
+                    </section>
+                </section>
+            </main>
     </body>
 </html>

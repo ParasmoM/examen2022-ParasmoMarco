@@ -1,0 +1,120 @@
+@use '../abstracts' as *;
+
+.dashboard aside {
+    padding: 1rem;
+
+    .container {
+        box-shadow: $inner-shadow;
+        border-radius: .5rem;
+        height: 100%;
+        padding: 1rem;
+    }
+
+    header {
+        display: flex;
+        place-content: center;
+        align-items: center;
+        // border: solid;
+        div {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            box-shadow: $shadow;
+            padding: .25rem;
+
+            p {
+                box-shadow: $inner-shadow;
+                height: 100%;
+                border-radius: 50%;
+                padding: 1rem;
+            }
+
+            span {
+                box-shadow: $shadow;
+                height: 100%;
+                border-radius: 50%;
+                // border: solid;
+                display: block;
+            }
+        }
+        h1 {
+            flex: auto;
+            font-size: 2.5rem;
+            font-weight: bold;
+            padding-left: 4rem;
+        }
+    }
+    main {
+        margin: 1rem 0;
+        padding: 0 2rem;
+        height: calc(100% - 136px);
+        // border: solid;
+        > p {
+            margin: 1rem 0;
+            // border: solid;
+            height: calc(100% - 100px);
+        }
+
+        > div {
+            display: flex;
+            justify-content: space-between;
+            // border: solid;
+            display: flex;
+            // justify-content: center;
+            align-items: center;
+            // padding: 1rem 0;
+
+            div {
+                display: flex;
+                gap: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: $inner-shadow;
+                border-radius: 2rem;
+                padding: .5rem;
+                // border: solid;
+
+                button {
+                    font-size: 3rem;
+                    // border: solid;
+                    box-shadow: $shadow;
+                    background-color: var(--greyLight-1);
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                p {
+                    font-size: 2rem;
+                }
+            }
+            p {
+                font-size: 1.5rem;
+            }
+        }
+    }
+    footer {
+        // padding: 1rem;
+        // border: solid;
+
+        div {
+            box-shadow: $shadow;
+            width: fit-content;
+            margin: auto;
+            padding: 1rem;
+            border-radius: $border-radius;
+            display: flex;
+            gap: 1rem;
+        }
+        button {
+            border: solid .25rem var(--greyLight-2);
+            // box-shadow: $inner-shadow;
+            padding: .5rem 1rem;
+            border-radius: .5rem;
+            background-color: var(--greyLight-1);
+        }
+    }
+}

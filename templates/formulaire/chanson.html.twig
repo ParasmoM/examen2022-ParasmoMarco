@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormulaireController!{% endblock %}
+
+{% block body %}
+<div id="modalCateg">
+    <div class="modalCateg-content">
+        <header>
+            <h1>Ajouter une chanson</h1>
+            <a href="{{ path('show_dashboard') }}">&times;</a>
+        </header>
+
+        {{ form_start(form) }}
+
+        <main>
+            <div class="row">
+                {{ form_row(form.auteur) }}
+            </div>
+            <div class="row-container">
+                <div class="row">
+                    {{ form_row(form.nomAlbum) }}
+                </div>
+                <div class="row">
+                    {{ form_row(form.titre) }}
+                </div>
+                <div class="row">
+                    {{ form_row(form.genre) }}
+                </div>
+            </div>
+            <div class="row-date">
+                {{ form_row(form.dateSortie) }}
+            </div>
+            <div class="row-textarea">
+                {{ form_row(form.paroles) }}
+            </div>
+        </main>
+
+        {{ form_rest(form) }}
+        <footer>
+            <div id="btnModal">
+                <button>Save</button>
+            </div>
+        </footer>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+@use '../abstracts' as *;
+
+.dashboard {
+    display: flex;
+    flex-flow: column;
+    gap: 4rem;
+    // border: solid;
+    height: 100%;
+
+    > header,
+    > footer {
+        box-shadow: $shadow;
+        border-radius: $border-radius;
+        height: 10rem;
+    }
+    > main {
+        display: flex;
+        gap: 4rem;
+        height: calc(100% - 28rem);
+        
+        section {
+            height: 100%;
+        }
+    }
+    aside {
+        flex: 1;
+        box-shadow: $shadow;
+        border-radius: $border-radius;
+    }
+}
+
+.dashboard section{
+    flex: 2;
+    padding: 2rem;
+    box-shadow: $shadow;
+    border-radius: $border-radius; 
+
+    table {
+        width: 100%;
+        // border-collapse: separate;
+        margin-top: 4rem;
+        font-size: 1.5rem;
+        // border-spacing: 0 10px ;
+    }
+
+    td {
+        // border: solid;
+        padding: 1.5rem 1rem;
+    }
+    tbody tr {
+        // box-shadow: $inner-shadow;
+        border-radius: $border-radius;
+    }
+    th:nth-child(2),
+    td:nth-child(2) {
+        text-align: center;
+        width: 5rem;
+    }
+    th:nth-child(3),
+    td:nth-child(3) {
+        text-align: center;
+        width: 10rem;
+    }
+    th:nth-child(4),
+    td:nth-child(4) {
+        text-align: center;
+        width: 5rem;
+    }
+}

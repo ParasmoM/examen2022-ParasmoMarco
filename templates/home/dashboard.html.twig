@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="dashboard">
+    <header>
+        {{ form_start(form) }}
+
+        {{ form_rest(form) }}
+            <button class=btn-edit>Editer</button>
+        {{ form_end(form) }}
+    </header>
+    <main>
+        <section>
+            <h2>Liste {{ nomTab }}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th><a href="{{ path('show_dashboard', {order: 'auteur'}) }}">Auteur</a></th>
+                        {# <th><a href="{{ path('show_dashboard', {order: 'genre'}) }}">Genre</a></th> #}
+                        <th><a href="{{ path('show_dashboard', {order: 'nomAlbum'}) }}">Nom album</a></th>
+                        {# <th><a href="{{ path('show_dashboard', {order: 'titre'}) }}">Titre</a></th> #}
+                        <th><a href="{{ path('show_dashboard', {order: 'votes'}) }}">Votes</a></th>
+                        <th><a href="">Date de sortie</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in chansons %}
+                    <tr>
+                        <td><a href="{{ path('show_chanson', {id: item.id}) }}">{{ item.auteur }}</a></td>
+                        {# <td>{{ item.genre }}</td> #}
+                        <td>{{ item.nomAlbum }}</td>
+                        {# <td>{{ item.titre }}</td> #}
+                        <td>{{ item.votes }}</td>
+                        <td>{{ item.dateSortie|date("Y") }}</td>
+                        <td><a href="{{ path('crud_dashboard', {id: item.id, action: 'update'}) }}">EDITER</a></td>
+                        <td>
+                            <form action="{{ path('crud_dashboard', {id: item.id, action: 'delete'}) }}" onsubmit="return confirm('Etes vous vraiment sur ?')" methods="post" >
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
+                                <button>DELETE</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        <aside>
+        {% if chanson %}
+            <div class="container">
+                <header>
+                    <div>
+                        <p>
+                            <span></span>
+                        </p>
+                    </div>
+                    <h1>{{ chanson.auteur }}</h1>
+                </header>
+                <main>
+                    <h2>{{ chanson.nomAlbum }} - {{ chanson.titre }} ({{ chanson.genre }})</h2>
+                    <p>
+                        {{ chanson.paroles }}
+                    </p>
+                    <div>
+                        <p>
+                        {{ chanson.dateSortie|date("Y-m-d") }}
+                        </p>
+                        <form action="{{ path('show_chanson', {id: chanson.id}) }}" method="POST">
+                            <div>
+                                <button name="direction" value="down">-</button>
+                                <p>{{ chanson.votes }}</p>
+                                <button name="direction" value="up">+</button>
+                            </div>
+                        </form>
+                    </div>
+                </main>
+                <footer>
+                    <div>
+                        <button>
+                            <a href="{{ path('crud_dashboard', {id: chanson.id, action: 'update'}) }}">EDITER</a>
+                        </button>
+                        <form action="{{ path('crud_dashboard', {id: chanson.id, action: 'delete'}) }}" onsubmit="return confirm('Etes vous vraiment sur ?')" methods="post" >
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ chanson.id) }}">
+                            <button>DELETE</button>
+                        </form>
+                    </div>
+                </footer>
+            </div>
+        {% endif %}
+        </aside>
+    </main>
+    <footer>
+        {{ knp_pagination_render(chansons) }}
+    </footer>
+</div>
+{% endblock %}

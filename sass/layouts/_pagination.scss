@@ -1,0 +1,28 @@
+@use '../abstracts' as *;
+
+.dashboard footer {
+    display: flex;
+    align-items: center;
+    place-content: center;
+    font-size: 2rem;
+
+    .pagination .first,
+    .pagination .last {
+        box-shadow: $shadow;
+        padding: .5rem 2rem;
+        font-weight: 900;
+        color: var(--primary);
+    }
+
+    .pagination .current {
+        box-shadow: $inner-shadow;
+        border-radius: 50%;
+        padding: .5rem 1rem;
+        color: var(--primary);
+        // font-weight: 900;
+    }
+
+    .pagination span {
+        margin: 0 1rem;
+    }
+}

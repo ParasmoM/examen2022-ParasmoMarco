@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap');
+
+:where(*, *::before, *::after) {
+    box-sizing: inherit;
+        font-family: 'Roboto', sans-serif;
+}
+:where(html) {
+    box-sizing: border-box;
+    font-size: 62.5%; //! 1rem = 10px    100% = 16px
+}
+:where(body) {
+    
+    line-height: 1.15;
+}
+:where(html, body, button, input, select, p, ol, ul, li, h1, h2, h3, h4, h5, h6) {
+    margin: 0;
+    padding: 0;
+}
+:where(ol, ul) {
+    list-style: none;
+}
+:where(table) {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+:where(a, button) {
+    text-decoration: none;
+    color: inherit;
+    cursor: revert;
+}
+:where(button) {
+    border: none;
+}
+:where(img) {
+    max-width: 100%;
+}
